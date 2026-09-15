@@ -16,6 +16,7 @@ import RegistrationsPage from './pages/admin/RegistrationsPage';
 import CalendarAdminPage from './pages/admin/CalendarAdminPage';
 import HeroSlidesAdminPage from './pages/admin/HeroSlidesAdminPage';
 import DisciplineGroupsAdminPage from './pages/admin/DisciplineGroupsAdminPage';
+import EventsAdminPage from './pages/admin/EventsAdminPage';
 import RequireAuth from './components/auth/RequireAuth';
 
 
@@ -65,6 +66,10 @@ function App() {
           <Route
             path="/admin/grupos-disciplinas"
             element={<DisciplineGroupsAdminPage />}
+          />
+          <Route
+            path="/admin/eventos"
+            element={<EventsAdminPage />}
           />
         </Route>
       </Route>

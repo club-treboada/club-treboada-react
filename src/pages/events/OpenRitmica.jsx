@@ -1,21 +1,35 @@
 // src/pages/OpenRitmica.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import EventTemplate from './EventTemplate';
-import styles from './OpenRitmica.module.css';
+import EventDetailsBox from '../../components/events/EventDetailsBox';
 import openRitmicaData from '../../data/openRitmicaData';
+import { getEvent, mergeEventRow } from '../../lib/eventsRepository';
+
+const EVENT_KEY = 'open-ritmica';
 
 const OpenRitmica = () => {
+  const [eventData, setEventData] = useState(() => mergeEventRow(null, openRitmicaData));
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await getEvent(EVENT_KEY);
+      if (cancelled) return;
+      if (error) {
+        // Fall back to the bundled static data so the page never breaks
+        // (network down, table not migrated yet, etc.).
+        console.warn('[open-ritmica] falling back to static data:', error.message);
+      }
+      setEventData(mergeEventRow(data, openRitmicaData));
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
-    <EventTemplate {...openRitmicaData}>
-      <div className={styles.highlightBox}>
-        <h4>Detalles del Evento</h4>
-        <ul>
-          <li>🏆 Modalidades: Individual y Conjuntos</li>
-          <li>🎯 Niveles: Base y Absoluto</li>
-          <li>📍 Pabellón Municipal dos Deportes de Pontevedra</li>
-          <li>⏰ Jornada de mañana y tarde</li>
-        </ul>
-      </div>
+    <EventTemplate {...eventData}>
+      <EventDetailsBox items={eventData.eventDetails} />
     </EventTemplate>
   );
 };

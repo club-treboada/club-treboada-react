@@ -22,6 +22,7 @@ Un abrazo,
 El equipo del Club Treboada`,
   importantNotice: 'Plazo de inscripción NOMINAL ata o 27 de maio.',
   contactEmail: "opentreboada@gmail.com",
+  eventDetails: [],
   //contactPhone: "693 75 19 09",
   //contactPerson: "Julia",
   links: [

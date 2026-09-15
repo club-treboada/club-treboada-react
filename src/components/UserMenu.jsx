@@ -134,6 +134,18 @@ const UserMenu = () => {
             </button>
           )}
 
+          {isStaff && (
+            <button
+              className={styles.menuItem}
+              onClick={() => {
+                setIsOpen(false);
+                navigate('/admin/eventos');
+              }}
+            >
+              <span>📣</span> Páxinas Open
+            </button>
+          )}
+
           <div className={styles.divider} />
 
           <button

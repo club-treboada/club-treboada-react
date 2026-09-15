@@ -1,16 +1,41 @@
 // src/pages/OpenAcrobatica.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import EventTemplate from './EventTemplate';
+import EventDetailsBox from '../../components/events/EventDetailsBox';
 import openAcrobaticaData from '../../data/openAcrobaticaData';
 import { openAcrobaticaCategories } from '../../data/openAcrobaticaCategoriesData';
 import { openAcrobaticaWinnersInfo, openAcrobaticaWinners } from '../../data/openAcrobaticaWinnersData';
+import { getEvent, mergeEventRow } from '../../lib/eventsRepository';
 import Card from '../../components/UI/Card';
 import OptimizedImage from '../../components/OptimizedImage';
 import styles from './EventTemplate.module.css';
 
+const EVENT_KEY = 'open-acrobatica';
+
 const OpenAcrobatica = () => {
+  const [eventData, setEventData] = useState(() => mergeEventRow(null, openAcrobaticaData));
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await getEvent(EVENT_KEY);
+      if (cancelled) return;
+      if (error) {
+        // Fall back to the bundled static data so the page never breaks
+        // (network down, table not migrated yet, etc.).
+        console.warn('[open-acrobatica] falling back to static data:', error.message);
+      }
+      setEventData(mergeEventRow(data, openAcrobaticaData));
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
-    <EventTemplate {...openAcrobaticaData}>
+    <EventTemplate {...eventData}>
+      <EventDetailsBox items={eventData.eventDetails} />
+
       {/* Gañadores da edición deste ano */}
       {openAcrobaticaWinners.length > 0 && (
         <Card hoverEffect={true} className={styles.contactCard}>
