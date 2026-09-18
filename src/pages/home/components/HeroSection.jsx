@@ -2,14 +2,13 @@
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import OptimizedImage from '../../../components/OptimizedImage';
 import {
   dbRowToHeroSlide,
   listActiveHeroSlides,
 } from '../../../lib/heroSlidesRepository';
 import heroSliderData from '../../../data/heroSliderData';
-import { getHeroCampThumbFromSlides } from '../../../utils/heroCampThumb';
 import styles from './HeroSection.module.css';
 
 // Import Swiper styles
@@ -55,9 +54,8 @@ const HeroSection = () => {
     };
   }, []);
 
-  const campHeroThumb = useMemo(
-    () => getHeroCampThumbFromSlides(slides),
-    [slides]
+  const mobileCards = slides.filter(
+    (slide) => slide.type === 'image' && slide.src && slide.link
   );
 
   return (
@@ -68,64 +66,45 @@ const HeroSection = () => {
           <h2>Ximnasia Rítmica, Acrobática e Trampolín</h2>
 
           {isMobile ? (
-            /* MOBILE: quick links to Open events + summer camp */
+            /* MOBILE: quick-link cards, generated from the same admin-managed slides */
             <div className={styles.mobileEvents}>
-              {/* Open Acrobática Card */}
-              <Link to="/open-acrobatica" className={styles.mobileEventCard}>
-                <div className={styles.mobileEventImage}>
-                  <OptimizedImage
-                    src="/images/open-acro/cartel.webp"
-                    alt="Open Acrobática"
-                  />
-                </div>
-                <div className={styles.mobileEventContent}>
-                  <h3 className={styles.mobileEventTitle}>Open Acrobática</h3>
-                  <span className={styles.mobileEventArrow}>→</span>
-                </div>
-              </Link>
-
-              {/* Open Rítmica Card */}
-              <Link to="/open-ritmica" className={styles.mobileEventCard}>
-                <div className={styles.mobileEventImage}>
-                  <OptimizedImage
-                    src="/images/open-rit/cartel.webp"
-                    alt="Open Rítmica"
-                  />
-                </div>
-                <div className={styles.mobileEventContent}>
-                  <h3 className={styles.mobileEventTitle}>Open Rítmica</h3>
-                  <span className={styles.mobileEventArrow}>→</span>
-                </div>
-              </Link>
-
-              {/* Summer camp */}
-              <Link
-                to="/campamento"
-                className={styles.mobileEventCard}
-                aria-label="Campamento de verán Treboada, información e inscrición"
-              >
-                {campHeroThumb ? (
-                  <div className={styles.mobileEventImage}>
-                    <OptimizedImage
-                      src={campHeroThumb.src}
-                      alt={campHeroThumb.alt}
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className={`${styles.mobileEventImage} ${styles.mobileEventImageCamp}`}
-                    aria-hidden
+              {mobileCards.map((slide) =>
+                slide.external ? (
+                  <a
+                    key={slide.id}
+                    href={slide.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.mobileEventCard}
                   >
-                    <span className={styles.mobileEventCampBadge}>
-                      Campamento
-                    </span>
-                  </div>
-                )}
-                <div className={styles.mobileEventContent}>
-                  <h3 className={styles.mobileEventTitle}>Campamento</h3>
-                  <span className={styles.mobileEventArrow}>→</span>
-                </div>
-              </Link>
+                    <div className={styles.mobileEventImage}>
+                      <OptimizedImage src={slide.src} alt={slide.alt} />
+                    </div>
+                    <div className={styles.mobileEventContent}>
+                      <h3 className={styles.mobileEventTitle}>
+                        {slide.alt}
+                      </h3>
+                      <span className={styles.mobileEventArrow}>→</span>
+                    </div>
+                  </a>
+                ) : (
+                  <Link
+                    key={slide.id}
+                    to={slide.link}
+                    className={styles.mobileEventCard}
+                  >
+                    <div className={styles.mobileEventImage}>
+                      <OptimizedImage src={slide.src} alt={slide.alt} />
+                    </div>
+                    <div className={styles.mobileEventContent}>
+                      <h3 className={styles.mobileEventTitle}>
+                        {slide.alt}
+                      </h3>
+                      <span className={styles.mobileEventArrow}>→</span>
+                    </div>
+                  </Link>
+                )
+              )}
             </div>
           ) : (
             /* DESKTOP: Swiper Slider */
