@@ -19,6 +19,7 @@ const contactData = {
     contacts: [
       { name: 'Eva', number: '627 42 90 24' },
       { name: 'Laura', number: '613 99 07 13' },
+      { name: 'Sara', number: '634 04 98 80' },
       { name: 'Carmelo', number: '637 71 09 16' },
       { name: 'Susana', number: '661 56 57 64' }
     ]
@@ -29,6 +30,7 @@ const contactData = {
     contacts: [
       { name: 'Eva', number: '627 42 90 24' },
       { name: 'Laura', number: '613 99 07 13' },
+      { name: 'Sara', number: '634 04 98 80' },
       { name: 'Susana', number: '661 56 57 64' }
     ]
   },
