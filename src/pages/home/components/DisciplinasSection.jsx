@@ -49,7 +49,7 @@ const DisciplinasSection = () => {
 
       <div className={styles.buttonContainer}>
         <Button
-          href="https://forms.gle/Wa6C1DAAoR1B43NQ7"
+          href="https://www.nosasports.com/registro?club=treboada"
           external={true}
           variant="primary"
           size="large"
