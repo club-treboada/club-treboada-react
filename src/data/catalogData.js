@@ -11,18 +11,18 @@ const catalogData = [
   {
     id: 2,
     name: "Top",
-    priceJr: "22€",
-    priceSr: "23€",
-    price: "Jr 22€ / Sr 23€",
+    priceJr: "25€",
+    priceSr: "26.50€",
+    price: "Jr 25€ / Sr 26.50€",
     image: "/images/catalog/top.webp",
     categories: ["partes-superiores", "entrenamiento"]
   },
   {
     id: 3,
     name: "Mini short",
-    priceJr: "19€",
-    priceSr: "21€",
-    price: "Jr 19€ - Sr 21€",
+    priceJr: "21.50€",
+    priceSr: "22.50€",
+    price: "Jr 21.50€ - Sr 22.50€",
     image: "/images/catalog/short.webp",
     categories: ["partes-inferiores", "entrenamiento"]
   },
@@ -43,7 +43,7 @@ const catalogData = [
   {
     id: 6,
     name: "Leggins largos",
-    price: "Jr 24€ - Sr 27€",
+    price: "Jr 28.50€ - Sr 30.50€",
     image: "/images/catalog/leggin.webp",
     categories: ["partes-inferiores", "entrenamiento", "competicion"]
   },
@@ -57,42 +57,42 @@ const catalogData = [
   {
     id: 8,
     name: "Mochila",
-    price: "24€",
+    price: "26.50€",
     image: "/images/catalog/mochila.webp",
     categories: ["complementos", "entrenamiento", "competicion"]
   },
   {
     id: 9,
     name: "Leggin Pirata",
-    price: "Jr 23€ - Sr 26€",
+    price: "Jr 26.50€ - Sr 29€",
     image: "/images/catalog/pirata.webp",
     categories: ["partes-inferiores", "entrenamiento"]
   },
   {
     id: 10,
     name: "Camiseta de asas",
-    price: "21€",
+    price: "23€",
     image: "/images/catalog/camiseta-asas.webp",
     categories: ["partes-superiores", "entrenamiento"]
   },
   {
     id: 11,
     name: "Rodilleras",
-    price: "16€",
+    price: "19€",
     image: "/images/catalog/rodilleras.webp",
     categories: ["complementos", "entrenamiento"]
   },
   {
     id: 12,
     name: "Camiseta oficial",
-    price: "15€",
+    price: "17€",
     image: "/images/catalog/camiseta.webp",
     categories: ["partes-superiores", "competicion"]
   },
   {
     id: 13,
     name: "Maillot básico",
-    price: "Jr 14€ - Sr 17€",
+    price: "Jr 20€ - Sr 21.50€",
     image: "/images/catalog/maillot.webp",
     categories: ["maillots", "entrenamiento"]
   },
@@ -106,42 +106,44 @@ const catalogData = [
   {
     id: 15,
     name: "Anorak",
-    price: "47€",
+    price: "58€",
     image: "/images/catalog/anorak.webp",
     categories: ["partes-superiores", "entrenamiento", "competicion"]
   },
   {
     id: 16,
     name: "Sudadera",
-    price: "40-43€",
+    priceJr: "42.50€",
+    priceSr: "45€",
+    price: "Jr 42.50€ - Sr 45€",
     image: "/images/catalog/sudadera.webp",
     categories: ["partes-superiores", "entrenamiento"]
   },
   {
     id: 17,
     name: "Pantalón corto",
-    price: "12€",
+    price: "14€",
     image: "/images/catalog/corto.webp",
     categories: ["partes-inferiores", "entrenamiento"]
   },
   {
     id: 18,
     name: "Calentadores",
-    price: "11€",
+    price: "14€",
     image: "/images/catalog/calentadores.webp",
     categories: ["complementos", "entrenamiento"]
   },
   {
     id: 19,
     name: "Pantalón de chandal",
-    price: "22€",
+    price: "27€",
     image: "/images/catalog/pantalon.webp",
     categories: ["partes-inferiores", "entrenamiento", "competicion"]
   },
   {
     id: 20,
     name: "Chaqueta equipación oficial",
-    price: "Jr 45€ - Sr 48€",
+    price: "Jr 46.50€ - Sr 50€",
     image: "/images/catalog/pantalon.webp", // Note: same image as above, might need separate
     categories: ["partes-superiores", "competicion"]
   }

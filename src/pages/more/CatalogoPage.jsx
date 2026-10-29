@@ -44,7 +44,7 @@ const Catalog = () => {
 
   // Handle order button click
   const handleOrderClick = () => {
-    window.open('https://forms.gle/uJcTCxPP4EA4X6sn7', '_blank');
+    window.open('https://www.nosasports.com/pedido-ropa?club=treboada', '_blank');
   };
 
   return (
