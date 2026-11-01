@@ -129,7 +129,7 @@ const catalogData = [
   {
     id: 18,
     name: "Calentadores",
-    price: "14€",
+    price: "21€",
     image: "/images/catalog/calentadores.webp",
     categories: ["complementos", "entrenamiento"]
   },
